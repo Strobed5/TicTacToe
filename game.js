@@ -12,7 +12,7 @@ function test(number){
         return
     i++
     cells[number].textContent = i % 2 ===0 ? "X" : "O" 
-    turnCounter.textContent = `Player ${i % 2 ===0 ? "X" : "O"} Turn`
+    turnCounter.textContent = `Player ${i % 2 ===0 ? "O" : "X"} Turn`
     if  (whoHasWon() != null)
         alert(`${whoHasWon()} has won!`)
 }
