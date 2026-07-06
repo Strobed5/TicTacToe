@@ -1,6 +1,6 @@
 const cells = document.querySelectorAll(".cell")
 const turnCounter = document.querySelector(".turn-counter")
-
+document.querySelector(".reset").addEventListener("click",reset);
 for (let i = 0; i<9; i++){
     cells[i].addEventListener("click", () => {test(i)})
 }
@@ -13,8 +13,19 @@ function test(number){
     i++
     cells[number].textContent = i % 2 ===0 ? "X" : "O" 
     turnCounter.textContent = `Player ${i % 2 ===0 ? "O" : "X"} Turn`
-    if  (whoHasWon() != null)
+    if  (whoHasWon() != null){
         alert(`${whoHasWon()} has won!`)
+        reset();
+    }
+}
+
+function reset(){
+    i=0;
+    turnCounter.textContent = `Player ${i % 2 ===0 ? "O" : "X"} Turn`
+for (let i = 0; i<9; i++){
+    cells[i].textContent = ""
+
+}
 }
 
 //0 for no one

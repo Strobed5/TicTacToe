@@ -22,10 +22,22 @@
 
 .turn-counter{
     text-align: center;
+    padding: 10px;
+    font-size: 30px;
 }
 .game {
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 0px;
     justify-self: center;
+}
+
+.reset{
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 225px;
+    height: 75px;
+    font-size: 30px;
+    caret-color: transparent;
 }
