@@ -1,32 +1,35 @@
+var turnNumber = 0;
+
 const cells = document.querySelectorAll(".cell")
 const turnCounter = document.querySelector(".turn-counter")
-document.querySelector(".reset").addEventListener("click", reset);
+
+document.querySelector(".reset").addEventListener("click", resetBoard);
+
 for (let i = 0; i < 9; i++) {
-    cells[i].addEventListener("click", () => { test(i) })
+    cells[i].addEventListener("click", () => { onCellClick(i) })
 }
 
-var i = 0;
 
-function test(number) {
+function onCellClick(number) {
     if (cells[number].textContent != "")
         return
-    i++
-    cells[number].textContent = i % 2 === 0 ? "X" : "O"
-    turnCounter.textContent = `Player ${i % 2 === 0 ? "O" : "X"} Turn`
+    turnNumber++
+    cells[number].textContent = turnNumber % 2 === 0 ? "X" : "O"
+    turnCounter.textContent = `Player ${turnNumber % 2 === 0 ? "O" : "X"} Turn`
     if (whoHasWon() != null) {
         alert(`${whoHasWon()} has won!`)
-        setTimeout(reset, 500);
-    }else if(i == 9){
+        setTimeout(resetBoard, 500);
+    }else if(turnNumber == 9){
 
         turnCounter.textContent = "   ";
         alert("Draw")
-        setTimeout(reset,500);
+        setTimeout(resetBoard,500);
     }
 }
 
-function reset() {
-    i = 0;
-    turnCounter.textContent = `Player ${i % 2 === 0 ? "O" : "X"} Turn`
+function resetBoard() {
+    turnNumber = 0;
+    turnCounter.textContent = `Player ${turnNumber % 2 === 0 ? "O" : "X"} Turn`
     for (let i = 0; i < 9; i++) {
         cells[i].textContent = ""
 
@@ -34,9 +37,6 @@ function reset() {
 
 }
 
-//0 for no one
-//1 for X
-//2 for O
 function whoHasWon() {
     for (let i = 1; i < 3; i++) {
         let char = i == 1 ? "X" : "O"
