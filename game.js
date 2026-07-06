@@ -32,9 +32,7 @@ function resetBoard() {
     turnCounter.textContent = `Player ${turnNumber % 2 === 0 ? "O" : "X"} Turn`
     for (let i = 0; i < 9; i++) {
         cells[i].textContent = ""
-
     }
-
 }
 
 function whoHasWon() {
